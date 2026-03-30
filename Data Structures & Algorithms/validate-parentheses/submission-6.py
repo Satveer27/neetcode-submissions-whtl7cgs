@@ -1,0 +1,27 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        if len(s) % 2 != 0:
+            return False
+
+        stack = []
+        hashMap = {')', '}', ']'}
+        hashMap2 = {'()', '{}', '[]'}
+        for i in s:
+            if i in hashMap:
+                if len(stack) != 0 and stack[-1] + i in hashMap2:
+                    stack.pop()
+                else:
+                    return False
+            else:
+                stack.append(i)
+
+        if len(stack) == 0:
+            return True
+        else:
+            return False        
+        
+        
+        
+
+
+        
